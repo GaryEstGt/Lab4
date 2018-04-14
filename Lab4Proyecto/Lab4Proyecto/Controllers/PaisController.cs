@@ -114,9 +114,17 @@ namespace Lab4Proyecto.Controllers
 
                     int contLinea = 0;
                     string csvData = System.IO.File.ReadAllText(filePath);
-                   
-                        Data.instance.Diccionario1 = JsonConvert.DeserializeObject<Dictionary<string, Pais>>(csvData);      
+                    Dictionary<string, Pais>[] lista;
 
+                        lista = JsonConvert.DeserializeObject < Dictionary < string,Pais >[]> (csvData);
+                    for (int i = 0; i < lista.Length; i++)
+                    {
+                        for (int y = 0; y < lista[i].Select(x=>x.Value).ToArray().Length; y++)
+                        {
+                            Data.instance.Diccionario1.Add(lista[i].Select(x => x.Key).ToArray()[0], lista[i].Select(x => x.Value).ToArray()[y]);
+                        }
+                        
+                    }
                 }
                 return RedirectToAction("Index");
             }

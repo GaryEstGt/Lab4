@@ -7,8 +7,8 @@ namespace Lab4Proyecto.Models
 {
     public class Pais
     {
-        public string faltantes;
-        public string coleccionadas;
-        public string cambios;
+        public string faltantes { get; set; }
+        public string coleccionadas { get; set; }
+        public string cambios { get; set; }
     }
 }

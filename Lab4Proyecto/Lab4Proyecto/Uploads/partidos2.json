@@ -1,0 +1,26 @@
+[
+  {
+    "noPartido": 5,
+    "fechaPartido": "13/11/18",
+    "Grupo": "A",
+    "Pais1": "España",
+    "Pais2": "IOtalia",
+    "Estadio": "Maracana"
+  },
+  {
+    "noPartido": 6,
+    "fechaPartido": "12/11/18",
+    "Grupo": "B",
+    "Pais1": "Holanda",
+    "Pais2": "Costa Rica",
+    "Estadio": "Bernabeu"
+  },
+  {
+    "noPartido": 7,
+    "fechaPartido": "14/11/18",
+    "Grupo": "S",
+    "Pais1": "Nigeria",
+    "Pais2": "Honduras",
+    "Estadio": "Doroteo Guamuch flores"
+  }
+]

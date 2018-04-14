@@ -6,17 +6,36 @@
 
 <h2>Index</h2>
 
+
 <p>
-    @Html.ActionLink("Crear Diccionario1", "CrearPorArchivo")
-    @Html.ActionLink("Crear Diccionario2", "CrearPorArchivo")
+    @Html.ActionLink("Crear Diccionario 1", "CrearPorArchivo")
+     @Html.ActionLink("Crear Diccionario 2", "CrearPorArchivo2")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.faltantes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.coleccionadas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cambios)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.faltantes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.coleccionadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cambios)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
