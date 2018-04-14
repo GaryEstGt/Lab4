@@ -7,8 +7,8 @@ namespace Lab4Proyecto.Models
 {
     public class Pais
     {
-        public string faltantes { get; set; }
-        public string coleccionadas { get; set; }
-        public string cambios { get; set; }
+        public int[] faltantes { get; set; }
+        public int[] coleccionadas { get; set; }
+        public int[] cambios { get; set; }
     }
 }

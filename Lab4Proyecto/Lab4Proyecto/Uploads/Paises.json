@@ -2,9 +2,9 @@
   
   {
     "España": {
-      "faltantes": "1,2,3",
-      "coleccionadas": "11,12,13,14",
-      "cambios": "11,13,24"
+      "faltantes": [ 1, 2, 3 ],
+      "coleccionadas": [ 11, 12, 13, 14 ],
+      "cambios": [ 11, 13, 24 ]
     }
   }
 ]
