@@ -8,6 +8,6 @@ namespace Lab4Proyecto.Models
     public class Calcomania
     {
         public string nombre { get; set; }
-        public bool disponibilidad { get; set; }
+        public string disponibilidad { get; set; }
     }
 }

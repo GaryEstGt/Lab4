@@ -166,7 +166,7 @@ namespace Lab4Proyecto.Controllers
                     foreach (var item in Data.instance.Diccionario2)
                     {
                         nueva.nombre = item.Key;
-                        nueva.disponibilidad = item.Value;
+                        nueva.disponibilidad = Convert.ToString(item.Value);
                         Data.instance.calcos.Add(nueva);
                     }
                 }
