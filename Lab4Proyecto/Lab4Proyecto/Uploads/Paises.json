@@ -1,10 +1,13 @@
-[
+{
   
-  {
     "España": {
-      "faltantes": [ 1, 2, 3 ],
+      "cambios": [ 11, 13, 24 ],
       "coleccionadas": [ 11, 12, 13, 14 ],
-      "cambios": [ 11, 13, 24 ]
+      "faltantes": [ 1, 2, 3 ]
+    },
+    "Guatemala": {
+      "cambios": [ 14, 9, 22 ],
+      "coleccionadas": [ 21, 132, 113, 414 ],
+      "faltantes": [ 1, 2, 3 ]
     }
-  }
-]
+}

@@ -25,6 +25,6 @@ namespace Lab4Proyecto
 
         public Dictionary<string,Pais> Diccionario1=new Dictionary<string, Pais>();
         public Dictionary<string, bool> Diccionario2=new Dictionary<string, bool>();
-
+        public List<Calcomania> calcos = new List<Calcomania>();
     }
 }

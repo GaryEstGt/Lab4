@@ -16,7 +16,11 @@ namespace Lab4Proyecto.Controllers
         {
             return View(Data.instance.Diccionario1.Select(x => x.Value).ToList());
         }
+        public ActionResult Index2()
+        {
+            return View(Data.instance.calcos);
 
+        }
         // GET: Pais/Details/5
         public ActionResult Details(int id)
         {
@@ -57,7 +61,7 @@ namespace Lab4Proyecto.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+               
 
                 return RedirectToAction("Index");
             }
@@ -114,17 +118,14 @@ namespace Lab4Proyecto.Controllers
 
                     int contLinea = 0;
                     string csvData = System.IO.File.ReadAllText(filePath);
-                    Dictionary<string, Pais>[] lista;
+                    Dictionary<string, Pais> lista;
 
-                        lista = JsonConvert.DeserializeObject < Dictionary < string,Pais >[]> (csvData);
-                    for (int i = 0; i < lista.Length; i++)
-                    {
-                        for (int y = 0; y < lista[i].Select(x=>x.Value).ToArray().Length; y++)
-                        {
-                            Data.instance.Diccionario1.Add(lista[i].Select(x => x.Key).ToArray()[0], lista[i].Select(x => x.Value).ToArray()[y]);
-                        }
-                        
-                    }
+                        Data.instance.Diccionario1 = JsonConvert.DeserializeObject< Dictionary < string,Pais >> (csvData);
+                    
+                        //foreach (var item in lista)
+                        //{
+                            
+                        //}
                 }
                 return RedirectToAction("Index");
             }
@@ -161,9 +162,15 @@ namespace Lab4Proyecto.Controllers
                     string csvData = System.IO.File.ReadAllText(filePath);
 
                     Data.instance.Diccionario2 = JsonConvert.DeserializeObject<Dictionary<string, bool>>(csvData);
-
+                    Calcomania nueva = new Calcomania();
+                    foreach (var item in Data.instance.Diccionario2)
+                    {
+                        nueva.nombre = item.Key;
+                        nueva.disponibilidad = item.Value;
+                        Data.instance.calcos.Add(nueva);
+                    }
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Index2");
             }
             catch
             {
