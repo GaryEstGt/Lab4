@@ -208,6 +208,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pais.cs" />
+    <Compile Include="Models\PaisString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,6 +276,7 @@
     <Content Include="Views\Pais\CrearPorArchivo2.cshtml" />
     <Content Include="Views\Pais\Index.cshtml" />
     <Content Include="Views\Pais\Index2.cshtml" />
+    <Content Include="Views\Pais\Actualizar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

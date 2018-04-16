@@ -14,11 +14,29 @@ namespace Lab4Proyecto.Controllers
         // GET: Pais
         public ActionResult Index()
         {
-            return View(Data.instance.Diccionario1.Select(x => x.Value).ToList());
+            List<PaisString> paises = new List<PaisString>();
+            foreach (var item in Data.instance.Diccionario1)
+            {
+                PaisString pais = new PaisString();
+                pais.nombre = item.Key;
+                pais.faltantes = item.Value.faltantesToString();
+                pais.coleccionadas = item.Value.coleccionadasToString();
+                pais.cambios = item.Value.cambiosToString();
+                paises.Add(pais);
+            }
+            return View(paises);
         }
         public ActionResult Index2()
         {
-            return View(Data.instance.calcos);
+            List<Calcomania> calcos = new List<Calcomania>();
+            foreach (var item in Data.instance.Diccionario2)
+            {
+                Calcomania nueva = new Calcomania();
+                nueva.nombre = item.Key;
+                nueva.disponibilidad = Convert.ToString(item.Value);
+                calcos.Add(nueva);
+            }
+            return View(calcos);
 
         }
         // GET: Pais/Details/5
@@ -50,19 +68,51 @@ namespace Lab4Proyecto.Controllers
         }
 
         // GET: Pais/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Actualizar(string id)
         {
-            return View();
+            return View(Data.instance.Diccionario1[id]);
         }
 
         // POST: Pais/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Actualizar(string id, FormCollection collection)
         {
             try
             {
-               
+                bool faltante = false, coleccionada = false;
+                int nueva = int.Parse(collection["nombre"]);
+                if (Data.instance.Diccionario1[id].faltantes.Count != 0)
+                {
+                    for (int i = 0; i < Data.instance.Diccionario1[id].faltantes.Count; i++)
+                    {
+                        if (nueva == Data.instance.Diccionario1[id].faltantes[i])
+                        {
+                            Data.instance.Diccionario1[id].faltantes.RemoveAt(i);
+                            Data.instance.Diccionario1[id].coleccionadas.Add(nueva);
+                            faltante = true;
+                            break;
+                        }                        
+                    }
+                }
 
+                if (!faltante)
+                {
+                    for (int j = 0; j < Data.instance.Diccionario1[id].coleccionadas.Count; j++)
+                    {
+                        if (nueva == Data.instance.Diccionario1[id].coleccionadas[j])
+                        {
+                            Data.instance.Diccionario1[id].cambios.Add(nueva);
+                            coleccionada = true;
+                            break;
+                        }                        
+                    }                    
+                }
+
+                if (!faltante && !coleccionada)
+                {
+                    TempData["alertMessage"] = "El número de calcomania que ingresó no existe";
+                    return View();
+                }                                                
                 return RedirectToAction("Index");
             }
             catch
@@ -120,12 +170,7 @@ namespace Lab4Proyecto.Controllers
                     string csvData = System.IO.File.ReadAllText(filePath);
                     Dictionary<string, Pais> lista;
 
-                        Data.instance.Diccionario1 = JsonConvert.DeserializeObject< Dictionary < string,Pais >> (csvData);
-                    
-                        //foreach (var item in lista)
-                        //{
-                            
-                        //}
+                    Data.instance.Diccionario1 = JsonConvert.DeserializeObject< Dictionary < string,Pais >> (csvData);                                            
                 }
                 return RedirectToAction("Index");
             }
@@ -161,14 +206,7 @@ namespace Lab4Proyecto.Controllers
                     int contLinea = 0;
                     string csvData = System.IO.File.ReadAllText(filePath);
 
-                    Data.instance.Diccionario2 = JsonConvert.DeserializeObject<Dictionary<string, bool>>(csvData);
-                    Calcomania nueva = new Calcomania();
-                    foreach (var item in Data.instance.Diccionario2)
-                    {
-                        nueva.nombre = item.Key;
-                        nueva.disponibilidad = Convert.ToString(item.Value);
-                        Data.instance.calcos.Add(nueva);
-                    }
+                    Data.instance.Diccionario2 = JsonConvert.DeserializeObject<Dictionary<string, bool>>(csvData);                                        
                 }
                 return RedirectToAction("Index2");
             }

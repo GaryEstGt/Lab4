@@ -1,20 +1,23 @@
-﻿@model IEnumerable<Lab4Proyecto.Models.Pais>
+﻿@model IEnumerable<Lab4Proyecto.Models.PaisString>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Diccionario 1</h2>
 
 
 <p>
-    @Html.ActionLink("Crear Diccionario 1", "CrearPorArchivo")
-     @Html.ActionLink("Ver Diccionario 2", "Index2")
+    @Html.ActionLink("Crear diccionario 1", "CrearPorArchivo")
+     @Html.ActionLink("Ver diccionario 2", "Index2")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.faltantes)
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>            
+            @Html.DisplayNameFor(model => model.faltantes)            
         </th>
         <th>
             @Html.DisplayNameFor(model => model.coleccionadas)
@@ -28,6 +31,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>        
+        <td>
             @Html.DisplayFor(modelItem => item.faltantes)
         </td>
         <td>
@@ -37,9 +43,7 @@
             @Html.DisplayFor(modelItem => item.cambios)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Actualizar", "Actualizar", new { id=item.nombre})            
         </td>
     </tr>
 }
