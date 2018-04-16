@@ -1,5 +1,3 @@
-# Lab4
-Formato json1
 {
 
   "Argentina": {
@@ -14,13 +12,4 @@ Formato json1
     "coleccionadas": [ 21, 132, 113, 414 ],
     "faltantes": [ 1, 2, 3 ]
   }
-}
-
-Formato json2
-{  
-  "Especial1": true,
-  "Especial2": false,
-  "país1_10": true,
-  "país1_15": true,
-  "país2_101": false
 }
